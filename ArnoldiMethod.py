@@ -12,7 +12,7 @@ df = pd.read_excel('DataCompanionMatrix.xlsx', header=None)
 data = np.array(df)
 
 ###########################. FUNCTION DEFINE. #################################################
-def Argoldi(data):
+def Arnoldi(data):
 	# Get dimensions of Data Matrix
 	m = data.shape[0]
 	n = data.shape[1]
@@ -41,7 +41,7 @@ def Argoldi(data):
 #
 ###########################. Call Function . #################################################
 
-Keigs, Kmodes = Argoldi(data)
+Keigs, Kmodes = Arnoldi(data)
 
 ###########################. Plots .   #################################################
 
