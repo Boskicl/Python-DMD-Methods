@@ -1,0 +1,69 @@
+import scipy.io as sc
+import math as m
+import numpy as np
+from numpy import diag, power
+from scipy.linalg import expm, sinm, cosm
+import matplotlib.pyplot as plt
+import pandas as pd
+
+###########################. Import Data from Excel Sheet. ###################################
+
+df = pd.read_excel('DataCompanionMatrix.xlsx', header=None)
+data = np.array(df)
+
+###########################. FUNCTION DEFINE. #################################################
+def Argoldi(data):
+	# Get dimensions of Data Matrix
+	m = data.shape[0]
+	n = data.shape[1]
+	# Re-define data matrix into x->{1,..,m-1} and y->{last column}
+	x = data[0:-1,:]
+	y = data[-1,:]
+	# Create A matrix and xx matrix which is used to find c_j values
+	A = np.dot(x,np.transpose(x))
+	xx = np.dot(x,np.transpose(y))
+	Cj_values = np.dot(np.linalg.pinv(A),xx)
+	# Building Companion Matrix
+	CompanionMatrix = np.zeros((n,n))
+
+	for i in range(0,n-1):
+		CompanionMatrix[i+1,i] = 1
+    #Fill last row of Companion Matrix with cj values
+	CompanionMatrix[:,n-1] = Cj_values
+	# Compute empirical Ritz eigenvalues/vectors --> Same as Koopman Eigenvalues/vectors
+	eigV,eigW = np.linalg.eig(CompanionMatrix)
+
+	#Koopman Eigs
+	Keigs = eigV
+	#Koopman Modes
+	Kmodes = np.dot(x,eigW)
+	return Keigs, Kmodes
+#
+###########################. Call Function . #################################################
+
+Keigs, Kmodes = Argoldi(data)
+
+###########################. Plots .   #################################################
+
+## Plot of Signals
+plt.figure(0)
+plt.plot(data[:,2:])
+plt.xlabel('Time [h]')
+plt.ylabel('Power Flow [MW]')
+plt.show()
+
+## Koopman Eigs Plotted on Unit Circle 
+t = np.linspace(0,2*np.pi,101)
+plt.figure(0)
+plt.plot(np.cos(t),np.sin(t),'--')
+plt.plot(Keigs.real,Keigs.imag,'ro')
+plt.xlabel(r'Real $\ lambda$')
+plt.ylabel(r'Imaginary $\ lambda$')
+plt.axes().set_aspect('equal')
+m = max(max(abs(Keigs.real)),max(abs(Keigs.imag)))
+plt.xlim(-1.1*m,1.1*m)
+plt.ylim(-1.1*m,1.1*m)
+plt.show()
+
+
+
