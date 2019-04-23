@@ -18,18 +18,18 @@ We will use Koopman Mode Analysis (KMA), based on analysis of properties of the 
 
 in which each xi and yi is a column vector of size m. We now define two m×n matrices:
 
-  $X=[x0 x1 … xn],Y=[y0 y1 … yn]$
+  $X=[x_o x_1 ... x_n]$, $Y=[y_o y_1 ... y_n]$
 
 If we define an operator A as
 
   $A=YX^†$
 
-where ```X†``` is the pseudo-inverse4 of X, then the Dynamic Mode Decomposition of the pair (X,Y) is given by the eigendecomposition of A. That is, the DMD modes and eigenvalues are eigenvectors and eigenvalues of A.
+where $X^†$ is the pseudo-inverse4 of $X$, then the Dynamic Mode Decomposition of the pair $(X,Y)$ is given by the eigendecomposition of $A$. That is, the DMD modes and eigenvalues are eigenvectors and eigenvalues of $A$.
 
-The definition above, from Tu et al., is known as the exact DMD. It is currently the most general definition and can be applied to any dataset that satisfies the given requirements. In this post, we are mostly interested in the cases where A satisfies (perhaps approximately) the equation ```yi=Axi``` for all i. Or, more precisely:
-```
-Y=AX
-```
-Clearly, X is a set of inputs vectors and Y is the corresponding set of output vectors. This particular interpretation of the DMD is extremely powerful, as it provides a convenient method for analyzing (and predicting) dynamical systems for which the governing equations are unknown. More on dynamical systems shortly.
+The definition above, from Tu et al., is known as the exact DMD. It is currently the most general definition and can be applied to any dataset that satisfies the given requirements. In this post, we are mostly interested in the cases where $A$ satisfies (perhaps approximately) the equation $y_i=Ax_i$ for all $i$. Or, more precisely:
 
-There are a number of theorems that go along with this definition of the DMD 2. One of the more useful theorems states that Y=AX exactly if and only if X and Y are linearly consistent (i.e., whenever Xv=0 for some vector v, then Yv=0 too). Linear consistency is relatively straightforward to test, as we shall see. That being said, linear consistency is not a mandatory prerequisite for using the DMD. Even if the DMD solution for A doesn’t exactly satisfy the equation Y=AX, it is still a least-squares solution, minimizing error in an L2 sense.
+$Y=AX$
+
+Clearly, $X$ is a set of inputs vectors and $Y$ is the corresponding set of output vectors. This particular interpretation of the DMD is extremely powerful, as it provides a convenient method for analyzing (and predicting) dynamical systems for which the governing equations are unknown. More on dynamical systems shortly.
+
+There are a number of theorems that go along with this definition of the DMD 2. One of the more useful theorems states that $Y=AX$ exactly if and only if $X$ and $Y$ are linearly consistent (i.e., whenever $Xv=0$ for some vector $v$, then $Yv=0$ too). Linear consistency is relatively straightforward to test, as we shall see. That being said, linear consistency is not a mandatory prerequisite for using the DMD. Even if the DMD solution for A doesn’t exactly satisfy the equation $Y=AX$, it is still a least-squares solution, minimizing error in an $L_2$ sense.
