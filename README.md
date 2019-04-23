@@ -14,15 +14,15 @@ The codes have their own data files for them specifically data from the papers. 
 ## Formal Definition (Theory)
 We will use Koopman Mode Analysis (KMA), based on analysis of properties of the point spectrum of the Koopman Operator. Thus consider a set of n data pairs,
 
-        ${(x0,y0),(x1,y1),…(xn,yn)}$
+  ${(x0,y0),(x1,y1),…(xn,yn)}$
 
 in which each xi and yi is a column vector of size m. We now define two m×n matrices:
 
-        $X=[x0 x1 … xn],Y=[y0 y1 … yn]$
+  $X=[x0 x1 … xn],Y=[y0 y1 … yn]$
 
 If we define an operator A as
 
-        $A=YX^†$
+  $A=YX^†$
 
 where ```X†``` is the pseudo-inverse4 of X, then the Dynamic Mode Decomposition of the pair (X,Y) is given by the eigendecomposition of A. That is, the DMD modes and eigenvalues are eigenvectors and eigenvalues of A.
 
