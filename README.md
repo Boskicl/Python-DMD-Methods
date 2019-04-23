@@ -33,3 +33,8 @@ $Y=AX$
 Clearly, $X$ is a set of inputs vectors and $Y$ is the corresponding set of output vectors. This particular interpretation of the DMD is extremely powerful, as it provides a convenient method for analyzing (and predicting) dynamical systems for which the governing equations are unknown. More on dynamical systems shortly.
 
 There are a number of theorems that go along with this definition of the DMD 2. One of the more useful theorems states that $Y=AX$ exactly if and only if $X$ and $Y$ are linearly consistent (i.e., whenever $Xv=0$ for some vector $v$, then $Yv=0$ too). Linear consistency is relatively straightforward to test, as we shall see. That being said, linear consistency is not a mandatory prerequisite for using the DMD. Even if the DMD solution for A doesn’t exactly satisfy the equation $Y=AX$, it is still a least-squares solution, minimizing error in an $L_2$ sense.
+
+## Companion Matrix Algorithm (Arnoldi)
+1) Define constants $c_j$ such that for vector $r$ satifying $r \bot {X_o X_1 ... X_{n-2}}$
+
+$r = X_{n-1} - \sum_{j=-0}^{n-2} c_j X_j$ 
