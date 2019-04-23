@@ -13,9 +13,9 @@ The codes have their own data files for them specifically data from the papers. 
 
 ## Formal Definition (Theory)
 We will use Koopman Mode Analysis (KMA), based on analysis of properties of the point spectrum of the Koopman Operator. Thus consider a set of n data pairs,
-```
-{(x0,y0),(x1,y1),…(xn,yn)}
-```
+
+${(x0,y0),(x1,y1),…(xn,yn)}$
+
 in which each xi and yi is a column vector of size m. We now define two m×n matrices:
 ```
 X=[x0 x1 … xn],Y=[y0 y1 … yn]
