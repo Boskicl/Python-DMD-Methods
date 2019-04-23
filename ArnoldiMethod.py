@@ -8,8 +8,8 @@ import pandas as pd
 
 ###########################. Import Data from Excel Sheet. ###################################
 
-df = pd.read_excel('DataCompanionMatrix.xlsx', header=None)
-data = np.array(df)
+df = pd.read_excel('DataCompanionMatrix.xlsx', header=None) #Insert your own excel file in between '__', if header is desired, delete header=None.
+data = np.array(df)					    #Make sure the data file will be a numpy array.
 
 ###########################. FUNCTION DEFINE. #################################################
 def Arnoldi(data):
@@ -45,9 +45,9 @@ Keigs, Kmodes = Arnoldi(data)
 
 ###########################. Plots .   #################################################
 
-## Plot of Signals
+## Plot of Signals 
 plt.figure(0)
-plt.plot(data[:,2:])
+plt.plot(data[:,2:]) #In the data file from the paper, the first signal is not used thus we do 2:
 plt.xlabel('Time [h]')
 plt.ylabel('Power Flow [MW]')
 plt.show()
