@@ -38,3 +38,13 @@ There are a number of theorems that go along with this definition of the DMD 2. 
 1) Define constants $c_j$ such that for vector $r$ satifying $r \bot {X_o X_1 ... X_{n-2}}$
 
 $r = X_{n-1} - \sum_{j=-0}^{n-2} c_j X_j$ 
+
+2) Define the companion matrix C as:
+
+$C :=   \begin{bmatrix}
+    0 0 ... 0 c_o \\
+    1 0 ... 0 c_1 \\
+    0 1 ... 0 c_2 \\
+    . . ... . . \\
+    0 0 ... 1 c_{n-2}    
+  \end{bmatrix}$
