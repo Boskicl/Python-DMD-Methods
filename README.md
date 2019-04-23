@@ -42,9 +42,9 @@ $r = X_{n-1} - \sum_{j=-0}^{n-2} c_j X_j$
 2) Define the companion matrix C as:
 
 $C :=   \begin{bmatrix}
-    0 0 ... 0 c_o \\
-    1 0 ... 0 c_1 \\
-    0 1 ... 0 c_2 \\
-    . . ... . . \\
+    0 0 ... 0 c_o \
+    1 0 ... 0 c_1 \
+    0 1 ... 0 c_2 \
+    . . ... . . \
     0 0 ... 1 c_{n-2}    
   \end{bmatrix}$
