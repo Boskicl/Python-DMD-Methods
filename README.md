@@ -18,13 +18,13 @@ We will use Koopman Mode Analysis (KMA), based on analysis of properties of the 
 
 in which each xi and yi is a column vector of size m. We now define two m×n matrices:
 
-  $X=[x_o x_1 ... x_n]$, $Y=[y_o y_1 ... y_n]$
+  $X=[x_o x_1 ... x_n]$,  $Y=[y_o y_1 ... y_n]$
 
-If we define an operator A as
+If we define an operator $A$ as
 
   $A=YX^†$
 
-where $X^†$ is the pseudo-inverse4 of $X$, then the Dynamic Mode Decomposition of the pair $(X,Y)$ is given by the eigendecomposition of $A$. That is, the DMD modes and eigenvalues are eigenvectors and eigenvalues of $A$.
+where $X^†$ is the pseudo-inverse of $X$, then the Dynamic Mode Decomposition of the pair $(X,Y)$ is given by the eigendecomposition of $A$. That is, the DMD modes and eigenvalues are eigenvectors and eigenvalues of $A$.
 
 The definition above, from Tu et al., is known as the exact DMD. It is currently the most general definition and can be applied to any dataset that satisfies the given requirements. In this post, we are mostly interested in the cases where $A$ satisfies (perhaps approximately) the equation $y_i=Ax_i$ for all $i$. Or, more precisely:
 
