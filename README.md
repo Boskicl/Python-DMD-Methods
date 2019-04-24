@@ -12,7 +12,11 @@ The following codes will be for Dynamic Mode Decomposition(DMD)/Koopman Methods.
 The codes have their own data files for them specifically data from the papers. Some of the data files are available to the public while some are not. If they are allowed, I will add them into a new folder. Most of the codes I will upload will only require you to put in your own data file (excel file or mat file or whatever you use) and run the code. 
 
 ## Formal Definition (Theory)
-We will use Koopman Mode Analysis (KMA), based on analysis of properties of the point spectrum of the Koopman Operator. Thus consider a set of n data pairs,
+Koopman Operator Theory is an alternative formulation of dynamical system theory which provides a versitle framework for data-driven methods of high-dimensional nonlinear systems. The theory orginated in the 1930s through the work of Koopman and Von Neuman. Work done in the previous few years has proved the spectrial decompostion, introducing the idea of Koopman Modes. This theory has led to data-driven methods to approximate the Koopman operator spectrum and mode.
+
+In discrete time setting, if:
+
+[first equation][https://latex.codecogs.com/gif.latex?x%27%20%3D%20T%28x%29]
 
   ${(x0,y0),(x1,y1),…(xn,yn)}$
 
