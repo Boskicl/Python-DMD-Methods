@@ -1,5 +1,3 @@
-import scipy.io as sc
-import math as m
 import numpy as np
 from numpy import diag, power
 from scipy.linalg import expm, sinm, cosm
