@@ -11,3 +11,4 @@ The following codes will be for Dynamic Mode Decomposition(DMD)/Koopman Methods.
 # Code Use:
 The codes have their own data files for them specifically data from the papers. Some of the data files are available to the public while some are not. If they are allowed, I will add them into a new folder. Most of the codes I will upload will only require you to put in your own data file (excel file or mat file or whatever you use) and run the code. 
 
+## Readme File is the PDF
