@@ -5,7 +5,7 @@ The following codes will be for Dynamic Mode Decomposition(DMD)/Koopman Methods.
 # Current codes:
 1) Arnoldi-Like Method Algorithm.  
   Varified Paper: Nonlinear Koopman Modes and Power System Stability Assessment Without Models- Yoshihiko Susuki and Igor Mezić
-2) Hankle-DMD Algorithm. (Working on)
+2) SVD-DMD Algorithm. (Working on)
 3) exact-DMD Algorithm. (Working on)
 
 # Code Use:
