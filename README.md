@@ -16,7 +16,7 @@ Koopman Operator Theory is an alternative formulation of dynamical system theory
 
 In discrete time setting, if:
 
-[first equation][https://latex.codecogs.com/gif.latex?x%27%20%3D%20T%28x%29]
+![equation1](https://latex.codecogs.com/gif.latex?x%27%20%3D%20T%28x%29)
 
   ${(x0,y0),(x1,y1),…(xn,yn)}$
 
