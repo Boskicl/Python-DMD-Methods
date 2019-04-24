@@ -1,9 +1,11 @@
 \documentclass{article}
 \usepackage[left=3cm, right=3cm, top=3cm]{geometry}
 \usepackage{amsmath}
+\usepackage{biblatex}
+
 \begin{document}
 \section*{Theory}
-Koopman operator theory is an alternative formulation of dynamical system theory which provides a versatile framework for data-driven methods of high-dimensional nonlinear systems. The theory originated in the 1930s through the work done by Koopman and Von Neuman. Work done in the previous few years has proven the spectral decomposition, introducing the idea of Koopman modes. This theory led to data-driven methods to approximate the Koopman operator spectrum and modes.\\
+Koopman operator theory is an alternative formulation of dynamical system theory which provides a versatile framework for data-driven methods of high-dimensional nonlinear systems. The theory originated in the 1930s through the work done by Koopman and Von Neumann \footcite{koopman1931hamiltonian}. Work done in the previous few years has proven the spectral decomposition, introducing the idea of Koopman modes. This theory led to data-driven methods to approximate the Koopman operator spectrum and modes.\\
 
 In a discrete time setting if:
 \begin{equation}
@@ -65,15 +67,15 @@ C:= \begin{bmatrix}
 
 $\lambda_j$s are the dynamic eigenvalues\
 
-$\phi_j$s are the dynamic modes\\
+$v_j$s are the dynamic modes\\
 \begin{align*}
-\phi_j=Xw_j
+v_j=Xw_j
 \end{align*}
 
 \section{SVD DMD}
 We will call $D$ as the data matrix.\\
 
-1) Form $X=[D_o D_1 \cdots D_{m-1}]$ and $Y=[D_1 D_2 \cdots D_m]$\\
+1) Form $X=[D_o,D_1, \cdots ,D_{m-1}]$ and $Y=[D_1,D_2, \cdots,D_m]$\\
 
 2) Compute the singular value decomposition (SVD) of X:
 \begin{align*}
@@ -85,20 +87,33 @@ svd(X) = U\Sigma V^*
 \tilde{A}=U^*YV\Sigma ^{-1}
 \end{align*}\\
 
-4) Get the eigenvalue/vectors from $\tilde{A}W=W\lambda$. Let $(\lambda_j,W_j)$ be the eigenvalue-vector pair.\\
+4) Get the eigenvalue/vectors from $\tilde{A}w=w\lambda$. Let $(\lambda_j,w_j)$ be the eigenvalue-vector pair.\\
 
 $\lambda_j$s are the dynamic eigenvalues\
 
-$\phi_j$s are the dynamic (projected) modes\\
+$v_j$s are the dynamic (projected) modes\\
 
 \begin{align*}
-\phi=UW
+v_j=Uw_j
 \end{align*}\\
 
 An alternative eigenvector or Exact DMD Mode $(\phi)$ of $\tilde{A}$ can be given by:
 \begin{align*}
-\phi = YV\Sigma^{-1}W
+v_j = \frac{1}{\lambda_j}(YV\Sigma^{-1}w_j)
 \end{align*}
+
+%----- Bibliography ----------------
+\bibliography{bibdemo}
+@article{koopman1932dynamical,
+  title={Dynamical systems of continuous spectra},
+  author={Koopman, BO and Neumann, J v},
+  journal={Proceedings of the National Academy of Sciences of the United States of America},
+  volume={18},
+  number={3},
+  pages={255},
+  year={1932},
+  publisher={National Academy of Sciences}
+}
 
 
 \end{document}
