@@ -18,37 +18,12 @@ In discrete time setting, if:
 
 <img src="http://www.sciweavers.org/tex2img.php?eq=x%27%3DT%28x%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="x'=T(x)" width="78" height="19" />
 
-  ${(x0,y0),(x1,y1),…(xn,yn)}$
+is a discrete time dynamical system where <img src="http://www.sciweavers.org/tex2img.php?eq=x%20%5Cin%20M&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="x \in M" width="50" height="15" /> and <img src="http://www.sciweavers.org/tex2img.php?eq=T%3A%20M%20%5Cto%20M&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="T: M \to M" width="86" height="15" />, then the associated Koopman Operator U is defined as:
 
-in which each xi and yi is a column vector of size m. We now define two m×n matrices:
+<img src="http://www.sciweavers.org/tex2img.php?eq=Uf%28x%29%20%3D%20f%20%20%5Ccirc%20T%28x%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="Uf(x) = f  \circ T(x)" width="131" height="19" />
 
-  $X=[x_o x_1 ... x_n]$,  $Y=[y_o y_1 ... y_n]$
+We call <img src="http://www.sciweavers.org/tex2img.php?eq=%20%5Cphi%20%20%3A%20M%20%5Cto%20%5Cmathbb%7BC%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt=" \phi  : M \to \mathbb{C}" width="211" height="19" /> an eigenfunction of U associated with <img src="http://www.sciweavers.org/tex2img.php?eq=%5Clambda%20%5Cin%20%5Cmathbb%7BC%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="\lambda \in \mathbb{C}" width="212" height="15" /> then
+<img src="http://www.sciweavers.org/tex2img.php?eq=U%5Cphi%20%3D%20%5Clambda%20%5Cphi&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="U\phi = \lambda \phi" width="72" height="19" />
+And in continous time,
+<img src="http://www.sciweavers.org/tex2img.php?eq=U%5Et%5Cphi%20%3D%20exp%28%5Clambda%20t%29%5Cphi&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="U^t\phi = exp(\lambda t)\phi" width="133" height="22" />
 
-If we define an operator $A$ as
-
-  $A=YX^†$
-
-where $X^†$ is the pseudo-inverse of $X$, then the Dynamic Mode Decomposition of the pair $(X,Y)$ is given by the eigendecomposition of $A$. That is, the DMD modes and eigenvalues are eigenvectors and eigenvalues of $A$.
-
-The definition above, from Tu et al., is known as the exact DMD. It is currently the most general definition and can be applied to any dataset that satisfies the given requirements. In this post, we are mostly interested in the cases where $A$ satisfies (perhaps approximately) the equation $y_i=Ax_i$ for all $i$. Or, more precisely:
-
-$Y=AX$
-
-Clearly, $X$ is a set of inputs vectors and $Y$ is the corresponding set of output vectors. This particular interpretation of the DMD is extremely powerful, as it provides a convenient method for analyzing (and predicting) dynamical systems for which the governing equations are unknown. More on dynamical systems shortly.
-
-There are a number of theorems that go along with this definition of the DMD 2. One of the more useful theorems states that $Y=AX$ exactly if and only if $X$ and $Y$ are linearly consistent (i.e., whenever $Xv=0$ for some vector $v$, then $Yv=0$ too). Linear consistency is relatively straightforward to test, as we shall see. That being said, linear consistency is not a mandatory prerequisite for using the DMD. Even if the DMD solution for A doesn’t exactly satisfy the equation $Y=AX$, it is still a least-squares solution, minimizing error in an $L_2$ sense.
-
-## Companion Matrix Algorithm (Arnoldi)
-1) Define constants $c_j$ such that for vector $r$ satifying $r \bot {X_o X_1 ... X_{n-2}}$
-
-$r = X_{n-1} - \sum_{j=-0}^{n-2} c_j X_j$ 
-
-2) Define the companion matrix C as:
-
-$C :=   \begin{bmatrix}
-    0 0 ... 0 c_o \
-    1 0 ... 0 c_1 \
-    0 1 ... 0 c_2 \
-    . . ... . . \
-    0 0 ... 1 c_{n-2}    
-  \end{bmatrix}$
