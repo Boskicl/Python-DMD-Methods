@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  24 APR 2019 13:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  24 APR 2019 13:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -528,27 +528,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
-[2]
-
-! LaTeX Error: Can be used only in preamble.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.106 \bibliography
-                   {bibdemo}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (44.31155pt too wide) in paragraph at lines 106--117
-[]\OT1/cmr/m/n/10 bibdemo @ar-ti-clekoop-man1932dynamical, ti-tle=Dynamical sys
--tems of con-tin-u-ous spec-tra, au-thor=Koopman,
- []
-
-[3] (./Readme.aux)
+[2] [3] (./Readme.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -580,7 +560,7 @@ l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on Readme.pdf (3 pages, 114432 bytes).
+Output written on Readme.pdf (3 pages, 113009 bytes).
 PDF statistics:
  58 PDF objects out of 1000 (max. 8388607)
  41 compressed objects within 1 object stream
