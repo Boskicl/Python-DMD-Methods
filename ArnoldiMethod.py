@@ -12,8 +12,8 @@ data = np.array(df)					    #Make sure the data file will be a numpy array.
 ###########################. FUNCTION DEFINE. #################################################
 def Arnoldi(data):
 	# Get dimensions of Data Matrix
-	m = data.shape[0]
-	n = data.shape[1]
+	m = data.shape[0] #rows of matrix
+	n = data.shape[1] #columns of matrix
 	# Re-define data matrix into x->{1,..,m-1} and y->{last column}
 	x = data[0:-1,:]
 	y = data[-1,:]
@@ -22,19 +22,19 @@ def Arnoldi(data):
 	xx = np.dot(x,np.transpose(y))
 	Cj_values = np.dot(np.linalg.pinv(A),xx)
 	# Building Companion Matrix
-	CompanionMatrix = np.zeros((n,n))
+	CompanionMatrix = np.zeros((m-1,m-1))
 
-	for i in range(0,n-1):
+	for i in range(0,m-2):
 		CompanionMatrix[i+1,i] = 1
     #Fill last row of Companion Matrix with cj values
-	CompanionMatrix[:,n-1] = Cj_values
+	CompanionMatrix[:,m-2] = Cj_values
 	# Compute empirical Ritz eigenvalues/vectors --> Same as Koopman Eigenvalues/vectors
 	eigV,eigW = np.linalg.eig(CompanionMatrix)
 
 	#Koopman Eigs
 	Keigs = eigV
 	#Koopman Modes
-	Kmodes = np.dot(x,eigW)
+	Kmodes = np.matmul(eigW,x)
 	return Keigs, Kmodes
 #
 ###########################. Call Function . #################################################
