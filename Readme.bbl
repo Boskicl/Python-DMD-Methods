@@ -238,6 +238,55 @@
     \field{year}{2004}
   \endentry
 
+  \entry{rowley2009spectral}{article}{}
+    \name{author}{5}{}{%
+      {{hash=RCW}{%
+         family={Rowley},
+         familyi={R\bibinitperiod},
+         given={Clarence\bibnamedelima W},
+         giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=MI}{%
+         family={Mezi{\'c}},
+         familyi={M\bibinitperiod},
+         given={Igor},
+         giveni={I\bibinitperiod},
+      }}%
+      {{hash=BS}{%
+         family={Bagheri},
+         familyi={B\bibinitperiod},
+         given={Shervin},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=SP}{%
+         family={Schlatter},
+         familyi={S\bibinitperiod},
+         given={Philipp},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=HDS}{%
+         family={Henningson},
+         familyi={H\bibinitperiod},
+         given={Dan\bibnamedelima S},
+         giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Cambridge University Press}%
+    }
+    \strng{namehash}{RCW+1}
+    \strng{fullhash}{RCWMIBSSPHDS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{pages}{115\bibrangedash 127}
+    \field{title}{Spectral analysis of nonlinear flows}
+    \field{volume}{641}
+    \field{journaltitle}{Journal of fluid mechanics}
+    \field{year}{2009}
+  \endentry
+
   \entry{YoshiComp}{article}{}
     \name{author}{2}{}{%
       {{hash=SY}{%

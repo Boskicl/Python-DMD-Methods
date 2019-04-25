@@ -46,7 +46,7 @@ In recent years, various methods have been made to compute spectral properties $
 %% Applications of DMD
 \newpage
 \section*{Applications of DMD}
-The Koopman operator is an infinite-dimensional, linear operator that acts on a Hilbert space of functions called the space of observables. The eigenvalues and eigenfunctions of this linear operator are capable of capturing key dynamics charactersticis of a linear or nonlinear dynamical system. Additionally, the Koopman modes, corresponding to a particular choice of observable function, allow one to reconstruct and forecast (predict) the observed quantity. Togethere these three values of Koopman eigenvalues, eigenfunctions, and modes yield the Koopman mode decomposition (KMD) of an arbitrary observable \autocite[4]{arbabi2017study}. There has been numerous work in control \autocite[5]{arbabi2018data} \autocite[6]{KORDA2018149}\
+The Koopman operator is an infinite-dimensional, linear operator that acts on a Hilbert space of functions called the space of observables. The eigenvalues and eigenfunctions of this linear operator are capable of capturing key dynamics charactersticis of a linear or nonlinear dynamical system. Additionally, the Koopman modes, corresponding to a particular choice of observable function, allow one to reconstruct and forecast (predict) the observed quantity. Togethere these three values of Koopman eigenvalues, eigenfunctions, and modes yield the Koopman mode decomposition (KMD) of an arbitrary observable \autocite[4]{arbabi2017study}. There has been numerous work in control \autocite[5]{arbabi2018data}$^{,}$\autocite[6]{KORDA2018149}\
 
 \subsection*{Temperature Data\autocite[7]{boskic}}
 Temperature readings are collected at five locations within a Laboratory at UCSB and an outdoor reading from the Santa Barbara Municipal Airport (\(\sim\) 2 miles away). In addition, there is humidity, light, pressure, and noise measurements for the indoor sensors. Measurements from these sensors (along with outdoor temperature) taken every 5 minutes over the course of 5 days can be found in figure (\ref{SigsFromSens}). Looking at just one sesnor we can see the indoor and outdoor temperature in figure (\ref{SensorInOutMode2l}).
@@ -93,7 +93,7 @@ The analysis using Koopman modes gives us a remarkable insight into the thermal 
 
 %%% Methods
 \newpage
-\section{Companion Matrix DMD\autocite[8]{YoshiComp}}
+\section{Companion Matrix DMD \autocite[8]{YoshiComp}$^{,}$ \autocite[9]{rowley2009spectral}}
 We will call $D$ as the data matrix.\\
 
 1) Define $X=[D_o,D_1, \cdots ,D_{m-1}]$\\
@@ -131,7 +131,7 @@ $v_j$s are the dynamic modes\\
 v_j=Xw_j
 \end{align*}
 
-\section{SVD DMD\autocite[9]{tu2013dynamic}}
+\section{SVD DMD\autocite[10]{tu2013dynamic}}
 We will call $D$ as the data matrix.\\
 
 1) Form $X=[D_o,D_1, \cdots ,D_{m-1}]$ and $Y=[D_1,D_2, \cdots,D_m]$\\
@@ -164,6 +164,6 @@ v_j = \frac{1}{\lambda_j}(YV\Sigma^{-1}w_j)
 %----- Bibliography ----------------
 %\bibliographystyle{unsrt}
 %\bibliography{workcited.bib}
-\printbibliography
+%\printbibliography
 
 \end{document}
