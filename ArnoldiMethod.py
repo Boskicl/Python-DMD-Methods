@@ -45,7 +45,7 @@ Keigs, Kmodes = Arnoldi(data)
 
 ## Plot of Signals 
 plt.figure(0)
-plt.plot(data[:,1:]) #In the data file from the paper, the first signal is not used thus we do 2:
+plt.plot(data[:,1:]) #In the data file from the paper, the first signal is not used thus we do 1:
 plt.xlabel('Time [h]')
 plt.ylabel('Power Flow [MW]')
 plt.show()
