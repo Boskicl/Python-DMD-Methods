@@ -1,42 +1,80 @@
 import numpy as np
 from numpy import diag, power
-from scipy.linalg import expm, sinm, cosm
+from scipy.linalg import expm, sinm, cosm, pinv, eig
 import matplotlib.pyplot as plt
 import pandas as pd
 
 ###########################. Import Data from Excel Sheet. ###################################
 
 df = pd.read_excel('DataCompanionMatrix.xlsx', header=None) #Insert your own excel file in between '__', if header is desired, delete header=None.
-data = np.array(df)					    #Make sure the data file will be a numpy array.
+data = np.array(df,dtype=float)					    #Make sure the data file will be a numpy array.
 
 ###########################. FUNCTION DEFINE. #################################################
 def Arnoldi(data):
 	# Get dimensions of Data Matrix
 	m = data.shape[0] #rows of matrix
 	n = data.shape[1] #columns of matrix
-	# Re-define data matrix into x->{1,..,m-1} and y->{last column}
+
+	### Re-define data matrix into x->{1,..,m-1} and y->{last column}
 	x = data[0:-1,:]
 	y = data[-1,:]
-	# Create A matrix and xx matrix which is used to find c_j values
-	A = np.dot(x,np.transpose(x))
-	xx = np.dot(x,np.transpose(y))
-	Cj_values = np.dot(np.linalg.pinv(A),xx)
-	# Building Companion Matrix
+
+	### Create A matrix and xx matrix which is used to find c_j values
+	A = np.dot(x,x.T)
+	xx = np.dot(x,y.T)
+	Cj_values = np.dot(pinv(A),xx)
+
+	### Building Companion Matrix
 	CompanionMatrix = np.zeros((m-1,m-1))
 
-	for i in range(0,m-2):
-		CompanionMatrix[i+1,i] = 1
-    #Fill last row of Companion Matrix with cj values
-	CompanionMatrix[:,m-2] = Cj_values
-	# Compute empirical Ritz eigenvalues/vectors --> Same as Koopman Eigenvalues/vectors
-	eigV,eigW = np.linalg.eig(CompanionMatrix)
+	for ii in range(0,m-2):
+		CompanionMatrix[ii+1,ii] = 1
 
-	#Koopman Eigs
+    ### Fill last row of Companion Matrix with cj values
+	CompanionMatrix[:,m-2] = Cj_values
+
+	### Compute empirical Ritz eigenvalues/vectors --> Same as Koopman Eigenvalues/vectors
+	eigV,eigW = eig(CompanionMatrix)
+
+	### Koopman Eigs/Empirical Ritz values
 	Keigs = eigV
-	#Koopman Modes
-	Kmodes = np.matmul(eigW,x)
+
+	### Define Vandemonde Matrix
+	VandemondeMatrix = np.ones((m-1,m-1),dtype=complex)
+	for ii in range(1,m-1):
+		VandemondeMatrix[:,ii] = np.power(Keigs,(ii))
+
+	### Koopman Eigenvectors/Emperical Ritz Vector
+	Kmodes = np.dot(x.T,pinv(VandemondeMatrix))
+
+	########################### Rest of Computation from Arnoldi Paper ########################### 
+	# args = np.zeros((m-1,m-1))
+	# modes = 0 * Kmodes
+	# for ii in range(0,m-2):
+	# 	modes[:,ii] = abs(Kmodes[:,ii])
+	# 	args[:,ii] = np.angle(Kmodes[:,ii])
+
+	# mode1_mode5 = np.zeros((m-1,2))
+	# phi1_phi5 = np.zeros((m-1,2))
+
+	# for ii in range(0,m-1):
+	# 	mode1_mode5[ii,:] = modes[ii,[0,4]]
+	# 	phi1_phi5[ii,:] = args[ii,[0,4]]
+	# x_pos = np.arange(len(mode1_mode5))
+
+	# # plt.subplot(1)
+	# plt.subplot(111)
+	# w = 0.3 
+	# plt.bar(x_pos,mode1_mode5[:,0],width=w, color='b',align='center',label='Mode 1')
+	# plt.bar(x_pos + w,mode1_mode5[:,1],width=w, color='r',align='center',label='Mode 5')
+	# plt.autoscale(tight=True)
+	# plt.ylabel('Modulus [MW]')
+	# plt.ylim((0,10))
+	# plt.legend()
+	# plt.show()
+
 	return Keigs, Kmodes
-#
+
 ###########################. Call Function . #################################################
 
 Keigs, Kmodes = Arnoldi(data)
@@ -63,5 +101,12 @@ plt.xlim(-1.1*m,1.1*m)
 plt.ylim(-1.1*m,1.1*m)
 plt.show()
 
-
+############################################################################
+#
+#				Author: Ljuboslav Boskic
+#				UCSB Graduate Student- Mezic Group
+#				Contact: lboskic@ucsb.edu
+#
+#
+############################################################################
 
