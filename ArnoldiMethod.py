@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 ###########################. Import Data from Excel Sheet. ###################################
+#DataCompanionMatrix.xlsx is the first set of power grid data used in Paper (Yoshi,Mezić)
+#DataCompanionMatrixUCTE.xlsx is the second set of power grid data from Paper (Yoshi,Mezić)
 
 df = pd.read_excel('DataCompanionMatrix.xlsx', header=None) #Insert your own excel file in between '__', if header is desired, delete header=None.
 data = np.array(df,dtype=float)					    #Make sure the data file will be a numpy array.
