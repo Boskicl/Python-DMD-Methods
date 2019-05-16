@@ -1,5 +1,5 @@
 import numpy as np
-from numpy import diag, power
+from numpy import diag, power, dot, zeros, ones
 from scipy.linalg import expm, sinm, cosm, pinv, eig
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -22,12 +22,12 @@ def Arnoldi(data):
 	y = data[-1,:]
 
 	### Create A matrix and xx matrix which is used to find c_j values
-	A = np.dot(x,x.T)
-	xx = np.dot(x,y.T)
-	Cj_values = np.dot(pinv(A),xx)
+	A = dot(x,x.T)
+	xx = dot(x,y.T)
+	Cj_values = dot(pinv(A),xx)
 
 	### Building Companion Matrix
-	CompanionMatrix = np.zeros((m-1,m-1))
+	CompanionMatrix = zeros((m-1,m-1))
 
 	for ii in range(0,m-2):
 		CompanionMatrix[ii+1,ii] = 1
@@ -42,22 +42,22 @@ def Arnoldi(data):
 	Keigs = eigV
 
 	### Define Vandemonde Matrix
-	VandemondeMatrix = np.ones((m-1,m-1),dtype=complex)
+	VandemondeMatrix = ones((m-1,m-1),dtype=complex)
 	for ii in range(1,m-1):
-		VandemondeMatrix[:,ii] = np.power(Keigs,(ii))
+		VandemondeMatrix[:,ii] = power(Keigs,(ii))
 
 	### Koopman Eigenvectors/Emperical Ritz Vector
-	Kmodes = np.dot(x.T,pinv(VandemondeMatrix))
+	Kmodes = dot(x.T,pinv(VandemondeMatrix))
 
 	########################### Rest of Computation from Arnoldi Paper ########################### 
-	# args = np.zeros((m-1,m-1))
+	# args = zeros((m-1,m-1))
 	# modes = 0 * Kmodes
 	# for ii in range(0,m-2):
 	# 	modes[:,ii] = abs(Kmodes[:,ii])
 	# 	args[:,ii] = np.angle(Kmodes[:,ii])
 
-	# mode1_mode5 = np.zeros((m-1,2))
-	# phi1_phi5 = np.zeros((m-1,2))
+	# mode1_mode5 = zeros((m-1,2))
+	# phi1_phi5 = zeros((m-1,2))
 
 	# for ii in range(0,m-1):
 	# 	mode1_mode5[ii,:] = modes[ii,[0,4]]
