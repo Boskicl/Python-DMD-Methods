@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from numpy import dot, multiply, diag, power
+from numpy import dot, multiply, diag, power, zeros, linspace, meshgrid
 from numpy import pi, exp, sin, cos, cosh, tanh, real, imag
 from numpy.linalg import inv, eig, pinv
 from scipy.linalg import svd, svdvals, norm
@@ -10,10 +10,10 @@ from scipy.linalg import svd, svdvals, norm
 ###########################. Create Dynamics. ###################################
 
 #define time and space domains
-x = np.linspace(-10, 10, 100)
-t = np.linspace(0, 6*pi, 80)
+x = linspace(-10, 10, 100)
+t = linspace(0, 6*pi, 80)
 dt = t[2] - t[1]
-Xm,Tm = np.meshgrid(x, t)
+Xm,Tm = meshgrid(x, t)
 
 # create three spatiotemporal patterns
 f1 = multiply(20-0.2*power(Xm, 2), exp((2.3j)*Tm))
@@ -43,7 +43,7 @@ def ExactDMD(data,relTol):
     plt.title('Singular Values Plot')
 
 
-    S = np.zeros((Sdiag.shape[0], Sdiag.shape[0]))  # Create S matrix with zeros based on Diag of S
+    S = zeros((Sdiag.shape[0], Sdiag.shape[0]))  # Create S matrix with zeros based on Diag of S
     np.fill_diagonal(S, Sdiag)  # Fill diagonal of S matrix with the nonzero values
     V = Vh.conj().T  # Create V matrix, we are given Vh which is conjugate transpose of V (convert back to V)
     r = np.count_nonzero(np.diag(S) > S[0, 0] * relTol)  # Find the diminsion of the subspace we are using- truncation
@@ -61,7 +61,7 @@ def ExactDMD(data,relTol):
     Keigs = Evalue
 
     #Plot Koopam Eigenvalues on unit circle
-    tt = np.linspace(0,2*np.pi,101)
+    tt = linspace(0,2*np.pi,101)
     plt.figure()
     plt.plot(np.cos(tt),np.sin(tt),'--')
     plt.plot(Keigs.real,Keigs.imag,'ro')
@@ -89,7 +89,7 @@ def ExactDMD(data,relTol):
 
     ###############################Reconstruction
     b = dot(pinv(Kmodes), X[:,0])
-    Xdmd = np.zeros([r, len(t)], dtype='complex')
+    Xdmd = zeros([r, len(t)], dtype='complex')
     for i,_t in enumerate(t):
         Xdmd[:,i] = multiply(power(Keigs, _t/dt), b)
 
@@ -120,7 +120,7 @@ def ExactDMD(data,relTol):
 
     ######### Realtive Error
     Q = dot(dot(dot(Kmodes,diag(Keigs)),pinv(Kmodes)),X)
-    relativeError = norm(Q-Y,'fro')
+    relativeError = norm(Q-Y,'fro')/norm(Y,'fro')
 
     return Keigs, Kmodes, Xdmd, relativeError
 
